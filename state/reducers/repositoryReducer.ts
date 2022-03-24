@@ -2,7 +2,7 @@ import { ActionType } from "../action-type";
 import { Action } from "../actions";
 import { RepositoryType } from '../../modules/interface';
 
-interface RepositoriesState {
+interface RepositoryState {
     loading: boolean;
     error: string | null;
     data: RepositoryType;
@@ -25,7 +25,8 @@ const initRepositoryData = {
     },
     homepage: '',
     html_url: '',
-    topics: []
+    topics: [],
+    readme: ''
 }
 
 const initialState = {
@@ -34,14 +35,14 @@ const initialState = {
     data: initRepositoryData
 }
 
-const reducer = (state: RepositoriesState = initialState, action: Action): RepositoriesState => {
+const reducer = (state: RepositoryState = initialState, action: Action): RepositoryState => {
     switch(action.type) {
         case ActionType.GET_REPOSITORY:
             return { loading: true, error: null, data: state.data };
         case ActionType.GET_REPOSITORY_SUCCESS:
             return { loading: false, error: null, data: action.payload };
         case ActionType.GET_REPOSITORY_ERROR:
-            return { loading: false, error: action.payload, data: initRepositoryData };
+            return { loading: false, error: action.payload, data: state.data };
         default:
             return state;
     }
