@@ -13,14 +13,14 @@ interface IParams extends ParsedUrlQuery {
   repo: string;
 }
 
-const repo = ({ username, repo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Repo = ({ username, repo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { data, error, loading} = useTypedSelector((state) => state.repository);
   const { description, topics, readme }: { description: string, topics: string[], readme: string} = data;
   const { GetRepository } = useActions();
   useEffect(() => {
     GetRepository(username, repo);
   }, []);
-  
+
   return (
     <>
       <RepositoryMenu />
@@ -39,4 +39,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 
-export default repo;
+export default Repo;
