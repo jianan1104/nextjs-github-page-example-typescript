@@ -30,7 +30,7 @@ const initialState = {
 const reducer = (state: RepositoriesState = initialState, action: Action): RepositoriesState => {
     switch(action.type) {
         case ActionType.SEARCH_REPOSITORIES:
-            return { loading: true, error: null, data: state.data, user: state.user };
+            return { loading: true, error: null, data: [...state.data], user: state.user };
         case ActionType.SEARCH_REPOSITORIES_SUCCESS:
             return { loading: false, error: null, data: [...state.data, ...action.payload], user: action.user };
         case ActionType.SEARCH_REPOSITORIES_ERROR:
