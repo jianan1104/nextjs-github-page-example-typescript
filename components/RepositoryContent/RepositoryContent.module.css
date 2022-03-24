@@ -1,0 +1,10 @@
+.card {
+    width: 100% !important;
+    overflow-x: hidden !important;
+}
+.cardHeader {
+    padding: 12px;
+}
+.cardContent {
+    padding: 18px;
+}

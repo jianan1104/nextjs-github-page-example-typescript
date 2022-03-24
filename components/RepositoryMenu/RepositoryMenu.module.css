@@ -1,0 +1,14 @@
+.header {
+    background-color: #24292f !important;
+    border-radius: 0px !important;
+    
+}
+.mobileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+.text {
+    color: #fff !important;
+}
