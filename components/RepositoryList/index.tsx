@@ -20,8 +20,8 @@ interface RepositoryListProps {
 const RepositoryList: React.FC<RepositoryListProps> = ({ response }) => {
     const { loading } = useTypedSelector((state) => state.repositories);
 
-    const SkeletonRows = Array.from(Array(20)).map(() => {
-      return <div style={{ marginBottom: '16px'}}><Skeleton height={30}/><Skeleton count={4}/></div>
+    const SkeletonRows = Array.from(Array(20)).map((_, idx) => {
+      return <div key={idx} style={{ marginBottom: '16px'}}><Skeleton height={30}/><Skeleton count={4}/></div>
     });
     const renderRepositories = () => {
       const items = response.map((repo, idx) => {
