@@ -2,6 +2,9 @@ import {Grid, Card, Icon } from 'semantic-ui-react';
 import About from '../About';
 import Readme from '../Readme';
 import styles from './RepositoryContent.module.css';
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import Skeleton from 'react-loading-skeleton';
+
 
 interface RepositoryContentProps {
     description: string;
@@ -10,6 +13,7 @@ interface RepositoryContentProps {
 }
 
 const RepositoryContent: React.FC<RepositoryContentProps> = ({description, topics, readme}) => {
+    const { loading } = useTypedSelector((state) => state.repository);
     return(
         <Grid stackable>
             <Grid.Row>
@@ -17,12 +21,13 @@ const RepositoryContent: React.FC<RepositoryContentProps> = ({description, topic
                 <Card className={styles.card}>
                 <Card.Header className={styles.cardHeader}><h3><Icon name="list"/>&nbsp;&nbsp;readme.md</h3></Card.Header>
                 <Card.Content className={styles.cardContent}>
-                    <Readme content={readme}/>
+                    { !loading ? <Readme content={readme}/> : <Skeleton count={20}/> }
                 </Card.Content>
                 </Card>
             </Grid.Column>
             <Grid.Column width={4}>
-                <About description={description} topics={topics}/>
+                <h3>About</h3>
+                { !loading ? <About description={description} topics={topics}/> : <Skeleton count={10}/> }
             </Grid.Column>
             </Grid.Row>
         </Grid>

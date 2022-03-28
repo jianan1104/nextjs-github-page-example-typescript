@@ -4,6 +4,7 @@ import 'semantic-ui-css/semantic.min.css'
 import ScrollToTop from "react-scroll-to-top";
 import NextNProgress from "nextjs-progressbar";
 import { AppProps } from 'next/app';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {

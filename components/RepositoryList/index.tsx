@@ -6,14 +6,23 @@ import styles from './RepositoryList.module.css';
 import TimeAgo from 'javascript-time-ago';
 import ReactTimeAgo from 'react-time-ago';
 import en from 'javascript-time-ago/locale/en.json';
-import { RepositoryType } from '../../modules/interface';
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import Skeleton from 'react-loading-skeleton';
+
 TimeAgo.addLocale(en);
 
 interface RepositoryListProps {
   response: any[]
 }
 
+
+
 const RepositoryList: React.FC<RepositoryListProps> = ({ response }) => {
+    const { loading } = useTypedSelector((state) => state.repositories);
+
+    const SkeletonRows = Array.from(Array(20)).map(() => {
+      return <div style={{ marginBottom: '16px'}}><Skeleton height={30}/><Skeleton count={4}/></div>
+    });
     const renderRepositories = () => {
       const items = response.map((repo, idx) => {
       const { name, description, 
@@ -62,7 +71,7 @@ const RepositoryList: React.FC<RepositoryListProps> = ({ response }) => {
   return (
     <>
     <Container>
-        { renderRepositories() }
+        { !loading ? renderRepositories() : SkeletonRows }
     </Container>
     </>
   )

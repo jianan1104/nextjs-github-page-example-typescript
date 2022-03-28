@@ -9,7 +9,6 @@ interface AboutProps {
 const About: React.FC<AboutProps> = ({ description, topics }) => {
     return (
         <>
-            <h3>About</h3>
             { description ? (
                 <p>{ description }</p>
             ): 'He/She is lazy, nothing here.'}

@@ -5,7 +5,7 @@ import MenuComponent from '../../../components/Menu';
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useActions } from "../../../hooks/useActions";
-import { ParsedUrlQuery } from 'querystring'
+import { ParsedUrlQuery } from 'querystring';
 
 
 interface IParams extends ParsedUrlQuery {

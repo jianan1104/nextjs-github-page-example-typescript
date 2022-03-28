@@ -2,40 +2,37 @@ import React from 'react'
 import { Menu, Icon, Container, Image, Label, Grid } from 'semantic-ui-react'
 import styles from './Menu.module.css';
 import { UserType } from '../../modules/interface';
+import Skeleton from 'react-loading-skeleton';
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 interface MenuComponentProps {
   user: UserType
 }
 
 const MenuComponent: React.FC<MenuComponentProps> = ({ user }) => {
+  const { loading} = useTypedSelector((state) => state.repositories);
   return (
     <div className={styles.menu}>
       <Container >
         <Grid columns={2} stackable>
           <Grid.Column width={2}>
             <div>
-              <Image src={user.avatar_url} size='small' rounded style={{border: 'solid #eeeeee'}}/>
+              { !loading ? (<Image src={user.avatar_url} size='small' rounded style={{border: 'solid #eeeeee'}}/>) : <Skeleton height={120}/> }
             </div>
           </Grid.Column>
           <Grid.Column width={14}>
+            { !loading ? (
             <Grid.Row columns={5}>
               <Grid.Column>
                 <h2>
-                  {
-                    user.name ? user.name : user.login 
-                  }
+                  { user.name ? user.name : user.login  }
                 </h2>
               </Grid.Column>
               <Grid.Column>
-                  {
-                    user.bio ? <p className='description'>{ user.bio }</p> : null
-                  }
-                  
+                  { user.bio ? <p className='description'>{ user.bio }</p> : null }
               </Grid.Column>
               <Grid.Column>
-                  {
-                    user.location ? <span><Icon name='location arrow'/>{ user.location }&emsp;</span> : null
-                  }
+                  { user.location ? <span><Icon name='location arrow'/>{ user.location }&emsp;</span> : null }
               </Grid.Column>
               <Grid.Column>
                   {
@@ -61,7 +58,7 @@ const MenuComponent: React.FC<MenuComponentProps> = ({ user }) => {
                       ) : null
                     }
               </Grid.Column>
-            </Grid.Row>
+            </Grid.Row> ) : <Skeleton count={5} /> }
           </Grid.Column>
         </Grid>
       <Menu pointing secondary style={{ overflowX: 'scroll', overflowY: 'hidden', paddingBottom: '0px'}}>
