@@ -13,26 +13,30 @@ interface IParams extends ParsedUrlQuery {
 };
 
 const Repos = ({ username }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [pageNumber, setPageNumber] = useState<number>(2);
+  const [pageNumber, setPageNumber] = useState<number>(1);
   const { SearchRepositoriesByUser } = useActions();
   const { user, data, error } = useTypedSelector((state) => state.repositories);
   const router = useRouter();
-  const handleOnDocumentBottom = useCallback(() => {
-    // When repos still available
-      if((pageNumber*10 <= user.public_repos)) {
-        SearchRepositoriesByUser(username, pageNumber, true);
-        setPageNumber(pageNumber + 1);
-      }
-    }, []);
-    // When reach page bottom, get new data
-  useBottomScrollListener(handleOnDocumentBottom);
 
   useEffect(() => {
     SearchRepositoriesByUser(username);
-    if(error != null) router.push('/404')
+  }, []);
+
+  useEffect(() => {
+    if(error != null) router.push('/404');
   }, [error]);
 
-  
+  const handleOnDocumentBottom = useCallback(() => {
+    console.log('hi')
+    console.log(pageNumber*10, user.public_repos)
+    // When repos still available
+      if((pageNumber*10 <= user.public_repos)) {
+        SearchRepositoriesByUser(username, pageNumber + 1, true);
+        setPageNumber(pageNumber + 1);
+      }
+    }, [data]);
+    // When reach page bottom, get new data
+  useBottomScrollListener(handleOnDocumentBottom);
 
   return (
     <>

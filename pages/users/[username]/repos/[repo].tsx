@@ -21,7 +21,10 @@ const Repo = ({ username, repo }: InferGetServerSidePropsType<typeof getServerSi
   const router = useRouter();
   useEffect(() => {
     GetRepository(username, repo);
-    if(error != null) router.push('/404')
+  }, []);
+
+  useEffect(() => {
+    if(error != null) router.push('/404');
   }, [error]);
 
   return (

@@ -33,10 +33,10 @@ const reducer = (state: RepositoriesState = initialState, action: Action): Repos
         case ActionType.SEARCH_REPOSITORIES_SUCCESS:
             return { loading: false, error: null, data: action.payload, user: action.user };
         case ActionType.SEARCH_REPOSITORIES_ERROR:
-            return { loading: false, error: action.payload, data: [...state.data], user: state.user };
+            return { loading: false, error: action.payload, data: state.data, user: state.user };
             // Load More Data
         case ActionType.LOAD_MORE_REPOSITORIES:
-            return { error: null, data: [...state.data], user: state.user };
+            return { error: null, data: state.data, user: state.user };
         case ActionType.LOAD_MORE_REPOSITORIES_SUCCESS:
             return { error: null, data: [...state.data, ...action.payload], user: state.user };
         
