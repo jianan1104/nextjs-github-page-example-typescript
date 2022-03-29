@@ -2,8 +2,10 @@ nextjs-github-page-example-typescript
 ===
 This project is update from old project [old project](https://github.com/jianan1104/nextjs-github-page-example) 
 
+Update:
 - Javascript -> Typescript
 - Using Redux
+- Add skeleton
 
 This is a [Next.js](https://nextjs.org/) project for simulating [Github](https://github.com/) user and repository page by using github API.
 
@@ -57,6 +59,5 @@ http://localhost:3000/users/[UserName]/[repos]/[RepositoryName]
 
 ## To do 
 - Add input to search user or repository
-- Page loading skeleton
 
 
