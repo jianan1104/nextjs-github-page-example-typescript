@@ -33,11 +33,11 @@ This project can visit any user or repository page of Github resource.
 ### OS
 - MacOS 12.2.1
 ### Developing Language
-- Typescript
+- Typescript 4.6.2
 ### Framework
-- React
-- Next.js
-- semantic-ui 
+- React 17.0.2
+- Next.js 12.1.0
+- semantic-ui 2.1.1
 
 ## Getting Started
 
@@ -51,10 +51,10 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 - Visit a user page
-http://localhost:3000/users/[UserName]/repos
+http://localhost:3000/users/**[UserName]**/repos
 
 - Visit a repository page of a user
-http://localhost:3000/users/[UserName]/[repos]/[RepositoryName]
+http://localhost:3000/users/**[UserName]**/**[repos]**/**[RepositoryName]**
 
 
 ## To do 
