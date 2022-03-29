@@ -27,8 +27,6 @@ const Repos = ({ username }: InferGetServerSidePropsType<typeof getServerSidePro
   }, [error]);
 
   const handleOnDocumentBottom = useCallback(() => {
-    console.log('hi')
-    console.log(pageNumber*10, user.public_repos)
     // When repos still available
       if((pageNumber*10 <= user.public_repos)) {
         SearchRepositoriesByUser(username, pageNumber + 1, true);
