@@ -1,13 +1,13 @@
-import React from 'react'
-import { Menu, Icon, Container, Image, Label, Grid } from 'semantic-ui-react'
 import styles from './Menu.module.css';
-import { UserType } from '../../modules/interface';
 import Skeleton from 'react-loading-skeleton';
+import { UserType } from '../../modules/interface';
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { Menu, Icon, Container, Image, Label, Grid } from 'semantic-ui-react';
+
 
 interface MenuComponentProps {
   user: UserType
-}
+};
 
 const MenuComponent: React.FC<MenuComponentProps> = ({ user }) => {
   const { loading} = useTypedSelector((state) => state.repositories);

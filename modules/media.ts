@@ -1,4 +1,4 @@
-import { createMedia } from "@artsy/fresnel"
+import { createMedia } from "@artsy/fresnel";
 
 const AppMedia = createMedia({
   breakpoints: {
@@ -7,8 +7,8 @@ const AppMedia = createMedia({
     lg: 1024,
     xl: 1192,
   },
-})
+});
 
 // Generate CSS to be injected into the head
-export const mediaStyle = AppMedia.createMediaStyle()
-export const { Media, MediaContextProvider } = AppMedia
+export const mediaStyle = AppMedia.createMediaStyle();
+export const { Media, MediaContextProvider } = AppMedia;

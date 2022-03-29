@@ -1,25 +1,28 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { ParsedUrlQuery } from 'querystring';
 import { Container } from 'semantic-ui-react';
+import { useActions } from "../../../../hooks/useActions";
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import RepositoryMenu from '../../../../components/RepositoryMenu';
 import RepositoryHeader from '../../../../components/RepositoryHeader';
 import RepositoryContent from '../../../../components/RepositoryContent';
-import { ParsedUrlQuery } from 'querystring'
-import { useEffect } from 'react';
-import { useTypedSelector } from "../../../../hooks/useTypedSelector";
-import { useActions } from "../../../../hooks/useActions";
 
 interface IParams extends ParsedUrlQuery {
   username: string;
   repo: string;
-}
+};
 
 const Repo = ({ username, repo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { data, error, loading} = useTypedSelector((state) => state.repository);
   const { description, topics, readme }: { description: string, topics: string[], readme: string} = data;
   const { GetRepository } = useActions();
+  const router = useRouter();
   useEffect(() => {
     GetRepository(username, repo);
-  }, []);
+    if(error != null) router.push('/404')
+  }, [error]);
 
   return (
     <>

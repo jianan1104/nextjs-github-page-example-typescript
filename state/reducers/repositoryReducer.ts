@@ -6,7 +6,7 @@ interface RepositoryState {
     loading: boolean;
     error: string | null;
     data: RepositoryType;
-}
+};
 
 const initRepositoryData = {
     name: '',
@@ -27,13 +27,13 @@ const initRepositoryData = {
     html_url: '',
     topics: [],
     readme: ''
-}
+};
 
 const initialState = {
     loading: false,
     error: null,
     data: initRepositoryData
-}
+};
 
 const reducer = (state: RepositoryState = initialState, action: Action): RepositoryState => {
     switch(action.type) {

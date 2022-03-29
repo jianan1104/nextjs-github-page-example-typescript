@@ -1,14 +1,14 @@
-import { Icon, Container, Breadcrumb, Button, Label, Menu, Dropdown } from 'semantic-ui-react';
-import { Media, MediaContextProvider } from "../../modules/media";
 import millify from "millify";
 import styles from './RepositoryHeader.module.css';
 import { RepositoryType } from '../../modules/interface';
+import { Media, MediaContextProvider } from "../../modules/media";
+import { Icon, Container, Breadcrumb, Button, Label, Menu, Dropdown } from 'semantic-ui-react';
 
 interface HeaderProps {
   username: string;
   repo: string;
   data: RepositoryType
-}
+};
 
 const RepositoryHeader: React.FC<HeaderProps> = ({ username, repo, data }) => {
     return (

@@ -1,9 +1,9 @@
-import { Provider } from "react-redux";
 import { store } from "../state";
+import { AppProps } from 'next/app';
+import { Provider } from "react-redux";
 import 'semantic-ui-css/semantic.min.css'
 import ScrollToTop from "react-scroll-to-top";
 import NextNProgress from "nextjs-progressbar";
-import { AppProps } from 'next/app';
 import 'react-loading-skeleton/dist/skeleton.css'
 
 

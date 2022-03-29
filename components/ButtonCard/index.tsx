@@ -4,7 +4,7 @@ import { Image, Button } from 'semantic-ui-react';
 interface ButtonCardProps {
   src: string;
   name: string;
-}
+};
 
 export const ButtonCard: React.FC<ButtonCardProps> = ({src, name}) => {
     return (
@@ -20,4 +20,4 @@ export const ButtonCard: React.FC<ButtonCardProps> = ({src, name}) => {
       </Link>
       </>
     )
-  }
+  };

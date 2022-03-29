@@ -1,16 +1,24 @@
-import { Octokit } from "@octokit/core";
-import base64 from "base-64";
 import utf8 from 'utf8';
+import base64 from "base-64";
 import { Dispatch } from "redux";
-import { ActionType } from "../action-type";
 import { Action } from "../actions";
+import { Octokit } from "@octokit/core";
+import { ActionType } from "../action-type";
+
 
 const octokit = new Octokit({ auth: process.env.GITHUB_API_TOKEN});
-export const SearchRepositoriesByUser = (username: string, pageNumber: number = 1) => {
+
+export const SearchRepositoriesByUser = (username: string, pageNumber: number = 1, isLoadMore: boolean = false) => {
     return async (dispatch: Dispatch<Action>) => {
-        dispatch({
-            type: ActionType.SEARCH_REPOSITORIES
-        });
+        if(isLoadMore) {
+            dispatch({
+                type: ActionType.LOAD_MORE_REPOSITORIES
+            });
+        } else {
+            dispatch({
+                type: ActionType.SEARCH_REPOSITORIES
+            });
+        }
         let data: any[] = [];
         await octokit.request('GET /users/{username}/repos', {
             username: username,
@@ -21,7 +29,11 @@ export const SearchRepositoriesByUser = (username: string, pageNumber: number = 
                 if(res.status === 200) {
                     data = res.data;
                 } else {
-                    throw `GET /users/{username}/repos FAILED. Http status is ${res.status}`;
+                    dispatch({
+                        type: ActionType.SEARCH_REPOSITORIES_ERROR,
+                        payload: `GET /users/{username}/repos FAILED. Http status is ${res.status}`
+                    })
+                    throw  new Error(`GET /users/{username}/repos FAILED. Http status is ${res.status}`)
                 }
             }).catch(err => {
                 dispatch({
@@ -29,23 +41,30 @@ export const SearchRepositoriesByUser = (username: string, pageNumber: number = 
                     payload: err.message
                 })
             });
-        let user: any;
-        await octokit.request('GET /users/{username}', {
-            username: username
-            }).then(res => {
-            if(res.status === 200) {
-                user = res.data;
-            }
-            }).catch(err => {
-            const msg = `HTTP[${err.status}] ${err.response.data.message}`;
-            throw msg;
-        });
+        if(isLoadMore) {
+            dispatch({
+                type: ActionType.LOAD_MORE_REPOSITORIES_SUCCESS,
+                payload: data
+            })
+        } else {
+            let user: any;
+            await octokit.request('GET /users/{username}', {
+                username: username
+                }).then(res => {
+                if(res.status === 200) {
+                    user = res.data;
+                }
+                }).catch(err => {
+                const msg = `HTTP[${err.status}] ${err.response.data.message}`;
+                throw msg;
+            });
 
-        dispatch({
-            type: ActionType.SEARCH_REPOSITORIES_SUCCESS,
-            payload: data,
-            user: user
-        })
+            dispatch({
+                type: ActionType.SEARCH_REPOSITORIES_SUCCESS,
+                payload: data,
+                user: user
+            })
+        }
     };
 };
 
@@ -64,7 +83,7 @@ export const GetRepository = (owner: string, repo: string) => {
                 if(res.status === 200) {
                     data = {...res.data, readme: ''};
                 } else {
-                    throw `GET /repos/{owner}/{repo} FAILED. Http status is ${res.status}`;
+                    throw  new Error(`GET /repos/{owner}/{repo} FAILED. Http status is ${res.status}`)
                 }
             }).catch(err => {
                 dispatch({
@@ -79,6 +98,8 @@ export const GetRepository = (owner: string, repo: string) => {
             }).then(res => {
             if(res.status === 200) {
                 data.readme = utf8.decode(base64.decode(res.data.content));
+            } else {
+                throw new Error(`GET /repos/{owner}/{repo}/readme FAILED. Http status is ${res.status}`)
             }
             }).catch(err => {
                 data.readme = 'Sorry, there is no readme.md. :)';

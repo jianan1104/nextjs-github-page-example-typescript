@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Menu, Input, Icon, Sidebar } from 'semantic-ui-react';
 import styles from './RepositoryMenu.module.css';
+import { Menu, Input, Icon, Sidebar } from 'semantic-ui-react';
 import { Media, MediaContextProvider } from "../../modules/media";
 
 const DesktopMenu: React.FC = () => {

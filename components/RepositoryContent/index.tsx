@@ -1,16 +1,17 @@
-import {Grid, Card, Icon } from 'semantic-ui-react';
 import About from '../About';
 import Readme from '../Readme';
-import styles from './RepositoryContent.module.css';
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Skeleton from 'react-loading-skeleton';
+import styles from './RepositoryContent.module.css';
+import { Grid, Card, Icon } from 'semantic-ui-react';
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+
 
 
 interface RepositoryContentProps {
     description: string;
     topics: string[];
     readme: string;
-}
+};
 
 const RepositoryContent: React.FC<RepositoryContentProps> = ({description, topics, readme}) => {
     const { loading } = useTypedSelector((state) => state.repository);

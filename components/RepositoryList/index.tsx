@@ -1,19 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
-import { Card, Icon, Container } from 'semantic-ui-react';
 import color from '../../modules/colors';
-import styles from './RepositoryList.module.css';
 import TimeAgo from 'javascript-time-ago';
 import ReactTimeAgo from 'react-time-ago';
-import en from 'javascript-time-ago/locale/en.json';
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Skeleton from 'react-loading-skeleton';
+import styles from './RepositoryList.module.css';
+import en from 'javascript-time-ago/locale/en.json';
+import { Card, Icon, Container } from 'semantic-ui-react';
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+
 
 TimeAgo.addLocale(en);
 
 interface RepositoryListProps {
   response: any[]
-}
+};
 
 
 

@@ -1,10 +1,10 @@
-import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
+import { NextPage, NextPageContext } from 'next';
 import { Image, Button, Modal } from 'semantic-ui-react';
 
 interface Props {
     statusCode?: number
-}
+};
 
 const Error: NextPage<Props> = ({ statusCode }) => {
     const router = useRouter();
@@ -28,14 +28,14 @@ const Error: NextPage<Props> = ({ statusCode }) => {
         </div>
         </>
     )
-  }
+  };
   
   Error.getInitialProps = ({ res, err }: NextPageContext) => {
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404
     return { statusCode }
-  }
+  };
   
-  export default Error
+  export default Error;
 
 
 

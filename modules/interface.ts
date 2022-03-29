@@ -13,7 +13,7 @@ export interface RepositoryType {
     html_url: string;
     topics: string[];
     readme: string;
-  }
+  };
 
   export interface UserType {
     avatar_url: string;
@@ -24,13 +24,13 @@ export interface RepositoryType {
     blog: string;
     twitter_username: string;
     public_repos: number;
-  }
+  };
 
   interface OwnerType {
     login: string
-  }
+  };
   
   interface LicenseType {
     spdx_id: string
   }
-  
+  ;
