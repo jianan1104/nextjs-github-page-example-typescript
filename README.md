@@ -7,7 +7,7 @@ Update:
 - Using Redux
 - Add skeleton
 
-This is a [Next.js](https://nextjs.org/) project for simulating [Github](https://github.com/) user and repository page by using github API.
+This is a [Next.js](https://nextjs.org/) project for simulating [Github](https://github.com/) user and repository page using by github API.
 
 ## Demo
 
@@ -19,15 +19,15 @@ https://nextjs-github-page-example-typescript.vercel.app/
 ## Overview
 This project can visit any user or repository page of Github resource.
 
-- Index
-![](https://i.imgur.com/M3bUktz.png)
-![](https://i.imgur.com/EB6ovZp.png)
-- User page
-![](https://i.imgur.com/TJ5t2eN.png)
-![](https://i.imgur.com/CHSbEs1.png)
-- Repository page
-![](https://i.imgur.com/xc1kjsD.png)
-![](https://i.imgur.com/VRbDZHz.png)
+- Mobile
+![](https://i.imgur.com/HtD7Bxu.png)
+![](https://i.imgur.com/1QOhic5.png)
+![](https://i.imgur.com/yLehl3b.png)
+
+- Desktop
+![](https://i.imgur.com/3yie7r5.png)
+![](https://i.imgur.com/TOW9nCb.png)
+![](https://i.imgur.com/wOIqCly.png)
 
 ## Developement/Testing Env
 ### OS
