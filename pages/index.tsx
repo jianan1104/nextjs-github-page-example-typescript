@@ -22,7 +22,7 @@ const Index: React.FC = () => {
             <ButtonCard name="Netflix" src="/netflix.png"/>
             <ButtonCard name="Google" src="/google.jpeg"/>
         </Grid>
-        <h3>Created by <a href='https://github.com/jianan1104/nextjs-github-page-example' target='_blank'>@jianan1104</a></h3>
+        <h3>Created by <a href='https://github.com/jianan1104/nextjs-github-page-example' target='_blank' rel="noreferrer">@jianan1104</a></h3>
       </div>
     </Container>
     </>
