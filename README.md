@@ -32,6 +32,7 @@ http://localhost:3000/users/[UserName]/[repos]/[RepositoryName]
 https://nextjs-github-page-example-typescript.vercel.app/
 
 ## Project structure:
+```
 .
 ├── components  元件庫
 │   ├── About   關於區塊
@@ -59,7 +60,7 @@ https://nextjs-github-page-example-typescript.vercel.app/
     ├── actions
     ├── actions-creator
     └── reducers
-
+```
 ## Overview
 This project can visit any user or repository page of Github resource.
 
