@@ -64,12 +64,12 @@ https://nextjs-github-page-example-typescript.vercel.app/
 ## Overview
 This project can visit any user or repository page of Github resource.
 
-- Mobile
+- Desktop
 ![](https://i.imgur.com/HtD7Bxu.png)
 ![](https://i.imgur.com/1QOhic5.png)
 ![](https://i.imgur.com/yLehl3b.png)
 
-- Desktop
+- Mobile
 ![](https://i.imgur.com/3yie7r5.png)
 ![](https://i.imgur.com/TOW9nCb.png)
 ![](https://i.imgur.com/wOIqCly.png)
